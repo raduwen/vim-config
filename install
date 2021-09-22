@@ -1,0 +1,11 @@
+#!/bin/sh
+
+VIM_CONFIG_DIR=$(cd $(dirname $0); pwd)
+
+if [ -d $HOME/.vim ] && [ ! -h $HOME/.vim ]; then
+  echo "backup to $HOME/.vim.bak"
+  mv $HOME/.vim $HOME/.vim.bak
+fi
+
+rm -rf $HOME/.vim
+ln -sf "$VIM_CONFIG_DIR"/.vim $HOME/.vim
