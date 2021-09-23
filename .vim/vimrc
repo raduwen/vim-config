@@ -34,17 +34,13 @@ call plug#end()
 filetype plugin indent on
 syntax enable
 
-set number
+function! s:load_config()
+  for path in glob($HOME . '/.vim/rc/*.vim', 1, 1)
+    exec "source " . path
+  endfor
+endfunction
 
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-
-set foldenable
-set foldlevelstart=99
-
-set updatetime=100
+call s:load_config()
 
 " Completion {{{
 let g:asyncomplete_auto_popup = 1
@@ -56,6 +52,7 @@ set completeopt=menuone,noinsert,noselect,preview
 
 let g:airline#extensions#tabline#enabled = 1
 
+set background=dark
 colorscheme dracula
 
 " vim: ts=2 sts=2 sw=2 et fdm=marker
