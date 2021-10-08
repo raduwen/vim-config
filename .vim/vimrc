@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf'
+Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'sgur/vim-editorconfig'
 
@@ -14,6 +15,9 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+Plug 'tpope/vim-fugitive'
+Plug 'lambdalisue/gina.vim'
 
 Plug 'fatih/vim-go'
 Plug 'nsf/gocode'
@@ -35,6 +39,8 @@ call plug#end()
 filetype plugin indent on
 syntax enable
 
+let mapleader = ","
+
 function! s:load_config()
   for path in glob($HOME . '/.vim/rc/*.vim', 1, 1)
     exec "source " . path
@@ -51,7 +57,22 @@ inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 set completeopt=menuone,noinsert,noselect,preview
 " }}}
 
-let g:airline#extensions#tabline#enabled = 1
+" Airline
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#nerdtree_statusline = 1
+let g:airline#extensions#fzf#enabled = 1
+let g:airline#extensions#gina#enabled = 1
+let g:airline#extensions#lsp#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+
+" NERDTree
+let NERDTreeShowHidden = 1
+let NERDTreeIgnore = ['\.git$', 'node_modules']
+autocmd VimEnter * NERDTree
+nnoremap <leader>n :NERDTree<cr>
+
+" Tagbar
+nnoremap <leader>t :TagbarOpenAutoClose<cr>
 
 set background=dark
 colorscheme dracula
