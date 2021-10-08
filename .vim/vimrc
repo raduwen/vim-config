@@ -1,8 +1,8 @@
 if &compatible
-  set compatible
+  set nocompatible
 endif
 
-" Plugins {{{
+" Plugins: {{{
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-easy-align'
