@@ -42,7 +42,7 @@ set paragraphs=IPLPPPQPP\ TPHPLIPpLpItpplpipbp
 set sections=SHNHH\ HUnhsh
 
 " path	list of directory names used for file searching (global or local to buffer)
-set path=.,/usr/include,,
+set path=.,/opt/brew/include,/usr/include
 
  " cdpath	list of directory names used for :cd
 set cd=,,
